@@ -8,4 +8,4 @@ EXPOSE 25565
 ENV EULA TRUE
 
 # Start Minecraft server when the container starts with custom command
-CMD ["java", "-Xmx1024M", "-Xms1024M", "-jar", "/minecraft-server.jar", "nogui"]
+CMD ["java", "-Xmx1024M", "-Xms1024M", "-jar", "/minecraft-server.jar", "-o", "true" "nogui"]
