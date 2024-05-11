@@ -14,4 +14,5 @@ RUN chmod 644 /data/ops.json
 RUN chown -R minecraft:minecraft /data
 
 ENV EULA=TRUE
+ENV OPS="JOPGOOD"
 EXPOSE 25565/tcp
