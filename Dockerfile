@@ -14,5 +14,6 @@ FROM itzg/minecraft-server
 # RUN chown -R minecraft:minecraft /data
 
 ENV EULA=TRUE
+ENV EXISTING_OPS_FILE=SYNC_FILE_MERGE_LIST
 ENV OPS=071d4e48-c6ab-43a5-92e8-8a60ba8bdee2
 EXPOSE 25565/tcp
