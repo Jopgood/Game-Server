@@ -1,11 +1,17 @@
-FROM tekgator/docker-mcmyadmin:latest
+# Stage 1: Build stage
+FROM itzg/minecraft-server as builder
+RUN mkdir /tempdata
+COPY ops.json /tempdata/ops.json
 
-# Set environment variables
-ENV PUID=1000
-ENV PGID=100
-ENV EULA=1
+# Stage 2: Final stage
+FROM itzg/minecraft-server
+COPY --from=builder /tempdata/ops.json /data/ops.json
 
-# Expose ports
-EXPOSE 8080
-EXPOSE 25565
+# Set permissions for the ops.json file
+RUN chmod 644 /data/ops.json
 
+# Ensure proper permissions for the data volume
+RUN chown -R minecraft:minecraft /data
+
+ENV EULA=TRUE
+EXPOSE 25565/tcp
